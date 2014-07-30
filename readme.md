@@ -1,4 +1,4 @@
-# theopt
+# theconf
 
-Simple option parser in c++.
+Simple configuration parser in c++.
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(thelog)
+project(theconf)
 
 option(sanitize "Select sanitizer (address,memory,thread,...)" OFF)
 
