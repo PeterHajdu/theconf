@@ -69,7 +69,7 @@ parse( std::istream& input )
 }
 
 const std::string&
-get( const std::string& key )
+get_value( const std::string& key )
 {
   KeyValueMap& key_value( instance() );
   KeyValueMap::const_iterator key_iterator( key_value.find( key ) );
@@ -85,6 +85,13 @@ has( const std::string& key )
   KeyValueMap& key_value( instance() );
   KeyValueMap::const_iterator key_iterator( key_value.find( key ) );
   return key_iterator != key_value.end();
+}
+
+void
+set_value( const std::string& key, const std::string& value )
+{
+  KeyValueMap& key_value( instance() );
+  key_value[ key ] = value;
 }
 
 }
