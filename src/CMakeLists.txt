@@ -1,5 +1,6 @@
 
 set(SOURCE_FILES
+  configuration.cpp
     )
 
 add_library(theconf STATIC ${SOURCE_FILES})

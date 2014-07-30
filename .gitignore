@@ -1,4 +1,4 @@
-src/libtheopt.a
+src/libtheconf.a
 test/test_runner
 test/valgrind.log
 
