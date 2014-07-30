@@ -2,6 +2,7 @@
 #include <memory>
 #include <unordered_map>
 #include <locale>
+#include <algorithm>
 
 namespace
 {
