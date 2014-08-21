@@ -95,7 +95,37 @@ Describe( a_configuration )
   {
     void SetUp()
     {
+      the::conf::clear();
+      const std::vector< std::string > parameters{ "apple", "apple", "--dog", "--cat", "mouse", "--help" };
+      the::conf::parse( parameters );
     }
+
+    It( can_parse_standalone_parameters )
+    {
+      AssertThat( the::conf::has( "dog" ), Equals( true ) );
+      AssertThat( the::conf::get< std::string >( "dog" ), Equals( "" ) );
+    }
+
+    It( can_parse_standalone_parameters_at_the_end_of_the_list )
+    {
+      AssertThat( the::conf::has( "help" ), Equals( true ) );
+    }
+
+    It( can_parse_key_value_pairs )
+    {
+      AssertThat( the::conf::get<std::string>( "cat" ), Equals( "mouse" ) );
+    }
+
+    It( does_not_add_values_as_keys )
+    {
+      AssertThat( the::conf::has( "mouse" ), Equals( false ) );
+    }
+
+    It( should_not_do_anything_with_values_without_keys )
+    {
+      AssertThat( the::conf::has( "apple" ), Equals( false ) );
+    }
+
   };
 
 };

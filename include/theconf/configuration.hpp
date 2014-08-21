@@ -3,6 +3,7 @@
 #include <istream>
 #include <string>
 #include <sstream>
+#include <vector>
 
 namespace the
 {
@@ -15,6 +16,9 @@ void clear();
 bool has( const std::string& key );
 const std::string& get_value( const std::string& key );
 void set_value( const std::string& key, const std::string& value );
+
+typedef std::vector< std::string > ParameterVector;
+void parse( const ParameterVector& );
 
 template < typename T >
 T get( const std::string& key )

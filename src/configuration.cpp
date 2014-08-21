@@ -100,6 +100,38 @@ set_value( const std::string& key, const std::string& value )
   key_value[ key ] = value;
 }
 
+void
+parse( const ParameterVector& parameters )
+{
+  KeyValueMap& key_value( instance() );
+
+  std::string last_key;
+  for ( const auto& parameter : parameters )
+  {
+    const size_t first_character( parameter.find_first_not_of( "-" ) );
+    const bool parameter_is_key( first_character!= 0 );
+    const bool parameter_is_value( !parameter_is_key );
+
+    if ( parameter_is_key )
+    {
+      key_value.emplace( last_key, "" );
+      last_key = parameter.substr( first_character );
+    }
+
+    const bool has_unused_key( !last_key.empty() );
+    if ( parameter_is_value && has_unused_key )
+    {
+      key_value.emplace( last_key, parameter );
+      last_key.clear();
+    }
+  }
+
+  if ( !last_key.empty() )
+  {
+    key_value.emplace( last_key, "" );
+  }
+}
+
 }
 
 }
