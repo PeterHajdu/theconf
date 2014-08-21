@@ -88,6 +88,12 @@ has( const std::string& key )
 }
 
 void
+clear()
+{
+  instance().clear();
+}
+
+void
 set_value( const std::string& key, const std::string& value )
 {
   KeyValueMap& key_value( instance() );

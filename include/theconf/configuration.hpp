@@ -11,8 +11,8 @@ namespace conf
 {
 
 void parse( std::istream& );
+void clear();
 bool has( const std::string& key );
-
 const std::string& get_value( const std::string& key );
 void set_value( const std::string& key, const std::string& value );
 
